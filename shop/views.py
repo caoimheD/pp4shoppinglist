@@ -4,12 +4,12 @@ from .models import Item
 # Create your views here.
 
 
-def get_list(request):
+def home_page(request):
     items = Item.objects.all()
     context = {
         'items': items
     }
-    return render(request, '../templates/shop_list.html', context)
+    return render(request, '../templates/base.html', context)
 
 
 def add_item(request):
