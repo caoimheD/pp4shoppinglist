@@ -18,5 +18,13 @@ def add_item(request):
         done = 'done' in request.POST
         Item.objects.create(name=name, done=done)
 
-        return redirect('get_list')
+        return redirect('lists')
     return render(request, '../templates/add_item.html')
+
+
+def your_lists(request):
+    items = Item.objects.all()
+    context = {
+        'items': items
+    }
+    return render(request, '../templates/shop_list.html', context)

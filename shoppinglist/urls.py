@@ -15,14 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from shop.views import home_page, add_item
+from shop.views import home_page, add_item, your_lists
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', home_page, name='get_list'),
-    path('add', add_item, name='add'),
+    path('', home_page, name='home'),
+    path('lists/add', add_item, name='add'),
     path('accounts/', include('allauth.urls')),
+    path('lists/', your_lists, name='lists'),
 ]
 
 urlpatterns += staticfiles_urlpatterns()
