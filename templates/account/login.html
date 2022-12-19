@@ -9,7 +9,7 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-8 mt-3 offset-md-2">
+    <div class="col-md-8 mt-3 offset-md-2" style="background-color: beige;">
 
       <h1>{% trans "Sign In" %}</h1>
 
@@ -30,7 +30,7 @@
         <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
         {% endif %}
         <!-- <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a> -->
-        <button class="primaryAction" type="submit">{% trans "Sign In" %}</button>
+        <button class="btn btn-primary" type="submit">{% trans "Sign In" %}</button>
       </form>
 
     </div>
