@@ -10,12 +10,12 @@
 </head>
 <body>
     {% block content %}
-    <h1>Add an item</h1>
+    <h1>Create a list</h1>
     <form method="POST" action="add">
         {% csrf_token %}
         <div>
             <p>
-                <label for="id_name">Name: </label>
+                <label for="id_name">Title: </label>
                 <input type="text" id="id_name" name="item_name">
             </p>
         </div>
@@ -28,7 +28,7 @@
         </div>
 
         <div>
-            <button type="submit">Add Item</button>
+            <button type="submit">Create list</button>
         </div>
     </form>
 
