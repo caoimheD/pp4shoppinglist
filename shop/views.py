@@ -18,8 +18,9 @@ class ShopList(ListView):
 
 class ListDetail(DetailView):
     model = List
-    template_name = '..templates/shop_detail.html'
+    template_name = '../templates/shop_detail.html'
     context_object_name = 'listdetails'
+
 
 
 

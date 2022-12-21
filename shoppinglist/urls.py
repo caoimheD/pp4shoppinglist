@@ -24,7 +24,7 @@ urlpatterns = [
     path('lists/add', add_item, name='add'),
     path('accounts/', include('allauth.urls')),
     path('lists/', ShopList.as_view(), name='lists'),
-    path('lists/details/<int:pk>', ListDetail.as_view(), name='listdetails'),
+    path('lists/details/<int:pk>/', ListDetail.as_view(), name='details'),
     path('lists/addlist', add_list, name='addlists'),
 ]
 

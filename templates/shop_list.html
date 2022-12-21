@@ -20,12 +20,27 @@
 
             <div class="col-sm" style="background-color: lavender;">
 
-                <h3>Your shopping list: {{ shoppinglist }} </h3>
-<table>
-    <td>
-     <a href=""} > View</a>
-    </td>
-</table>
+
+                <table>
+                    
+                        <h3>Your shopping lists: </h3>
+
+                        {% for shoppinglist in shoppinglists %}
+
+                        <tr>
+
+                        <td> {{ shoppinglist.title }} </td>
+                        <td><a href={% url 'details' shoppinglist.id %}> View </a></td>
+
+                        </tr>
+
+                        {% endfor %}
+
+                    
+
+                    <a href="addlist">New List</a>
+
+                </table>
                 <table>
                     {% for item in items %}
                     <tr>
@@ -42,13 +57,8 @@
                 <br>
                 <a href="">Delete an item from this list!</a>
 
-                <div class="col-sm" style="background-color: beige;">
-                    <h3>another list</h3>
-                </div>
 
-                <a href="addlist">New List</a>
 
-                
 
             </div>
         </div>
