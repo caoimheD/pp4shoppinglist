@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponse, redirect
-from .models import List, Item
+from .models import List
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 

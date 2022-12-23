@@ -13,13 +13,16 @@
             <ul class="list-group">
                 <li class="list-group-item">Title: {{ listdetails.title }}</li>
                 <li class="list-group-item">Description: {{ listdetails.description }}</li>
-                <li class="list-group-item">Items: {{ listdetails.items }}</li>
+                <li class="list-group-item">Items: {{ listdetails.list_items }}</li>
+                <li class="list-group-item">Date: {{ listdetails.date }}</li>
+                <h4>Additional info: </h4>
                 <li class="list-group-item">Created on: {{ listdetails.created_on }}</li>
                 <li class="list-group-item">Last updated on: {{ listdetails.updated_on }}</li>
                 <li class="list-group-item">Completed: {{ listdetails.complete }}</li>
-              </ul>
-
+            </ul>
+             
             <div class="list-group">
+                <h4>Actions:</h4>
                 <a href="add" class="list-group-item list-group-item-action">Add an item</a>
                 <a href="#" class="list-group-item list-group-item-action">Delete an item</a>
             </div>
