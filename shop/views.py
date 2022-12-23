@@ -1,7 +1,6 @@
 from django.shortcuts import render, HttpResponse, redirect
 from .models import List
-from django.views.generic.list import ListView
-from django.views.generic.detail import DetailView
+from django.views.generic import ListView, DetailView, UpdateView, CreateView, DeleteView
 
 # Create your views here.
 
@@ -22,6 +21,12 @@ class ListDetail(DetailView):
     context_object_name = 'listdetails'
 
 
+class UpdateList(UpdateView):
+    model = List
+    fields = 'title', 'description', 'date', 'list_items', 'complete'
+    template_name = '../templates/update_list.html'
+    context_object_name = 'updatelist'
+    success_url = "../templates/shop_detail.html"
 
 
 
