@@ -18,6 +18,8 @@ from django.urls import path, include
 from shop.views import home_page, add_item, add_list, ShopList, ListDetail, UpdateList
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
+app_name = 'shop'
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home_page, name='home'),

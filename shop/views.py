@@ -1,6 +1,8 @@
 from django.shortcuts import render, HttpResponse, redirect
 from .models import List
 from django.views.generic import ListView, DetailView, UpdateView, CreateView, DeleteView
+from .forms import ListForm
+from django.urls import reverse, reverse_lazy
 
 # Create your views here.
 
@@ -26,8 +28,9 @@ class UpdateList(UpdateView):
     fields = 'title', 'description', 'date', 'list_items', 'complete'
     template_name = '../templates/update_list.html'
     context_object_name = 'updatelist'
-    success_url = "../templates/shop_detail.html"
 
+    def get_success_url(self):
+        return reverse_lazy('details', kwargs={'pk': self.object.pk})
 
 
 """
