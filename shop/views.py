@@ -11,6 +11,15 @@ def home_page(request):
     return render(request, '../templates/base.html')
 
 
+class CreateList(CreateView):
+    model = List
+    fields = 'title', 'description', 'date', 'list_items', 'complete'
+    template_name = '../templates/create_list.html'
+
+    def get_success_url(self):
+        return reverse_lazy('lists')
+
+
 class ShopList(ListView):
     model = List
     template_name = '../templates/shop_list.html'
