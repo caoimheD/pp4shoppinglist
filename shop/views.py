@@ -42,6 +42,14 @@ class UpdateList(UpdateView):
         return reverse_lazy('details', kwargs={'pk': self.object.pk})
 
 
+class DeleteList(DeleteView):
+    model = List
+    template_name = '../templates/delete_list.html'
+
+    def get_success_url(self):
+        return reverse_lazy('lists')
+
+
 """
 class ListDetail(DetailView):
     model = List
