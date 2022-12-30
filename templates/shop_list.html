@@ -1,34 +1,34 @@
 {% extends "base.html" %}
 
-    {% block content %}
+{% block content %}
 
-    <div class="container-fluid">
+<div class="container-fluid">
 
-        <div class="row">
+    <div class="row">
 
-            <div class="col-sm" style="background-color: lavender;">
+        <div class="col-sm" style="background-color: #6E7DAB;">
 
-                <h3>Your shopping lists: </h3>
+            <h3>Your shopping lists: </h3>
 
-                {% for shoppinglist in shoppinglists %}
+            {% for shoppinglist in shoppinglists %}
 
-                <ul class="list-group">
+                    <div class="card text-center mb-3" style="background-color: #D1E3DD;">
+                        <div class="card-body">
+                            <h5 class="card-title"> {{ shoppinglist.title }} </h5>
+                            <h6 class="card-subtitle mb-2 text-muted">{{ shoppinglist.description }}</h6>
+                            <p class="card-text">Complete: {{ shoppinglist.complete }}</p>
+                            <a href={% url 'details' shoppinglist.id %} class="card-link">See details</a>
+                        </div>
+                    </div>
 
-                    <li class="list-group-item">
+            {% endfor %}
 
-                        <a class="btn btn-outline-secondary btn-lg btn-block" href={% url 'details' shoppinglist.id %}
-                            role="button"> {{ shoppinglist.title }} </a>
-                    </li>
-                </ul>
-
-                {% endfor %}
-
-                <div class="list-group">
-                    <a href={% url 'new' %} class="list-group-item list-group-item-action">New list</a>
-                </div>
-
+            <div class="list-group">
+                <a href={% url 'new' %} class="list-group-item list-group-item-action">New list</a>
             </div>
+
         </div>
     </div>
+</div>
 
-    {% endblock %}
+{% endblock %}

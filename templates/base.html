@@ -18,14 +18,14 @@
 
 </head>
 
-<body>
+<body style="background-color: #D1E3DD;">
 
-  <div class="jumbotron text-center" style="margin-bottom:0" style="background-color: #e3f2fd;">
+  <div class="jumbotron text-center" style="margin-bottom:0; background-color: #6E7DAB; color: #D1E3DD;">
     <h1>Plan your shopping!</h1>
     <p>Create personalized lists today!</p>
   </div>
 
-  <nav class="navbar navbar-expand-sm bg-light">
+  <nav class="navbar navbar-expand-sm" style="border-color: #6E7DAB; border-radius: 2px;">
 
     <!-- Links -->
     <ul class="navbar-nav">
@@ -34,10 +34,10 @@
       </li>
       {% if user.is_authenticated %}
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
+        <a class="nav-link" href="{% url 'lists' %}">Your Lists</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'lists' %}">Your Lists</a>
+        <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
       </li>
       {% else %}
       <li class="nav-item">
