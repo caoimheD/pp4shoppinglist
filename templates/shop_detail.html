@@ -3,29 +3,26 @@
 {% block content %}
 
 <div class="container-fluid">
-
+<br>
     <div class="row">
 
-        <div class="col-sm" style="background-color: lavender;">
+        <div class="col-sm">
 
-            <h3>Your shopping list: {{ listdetails.title }} </h3>
-
-            <ul class="list-group">
-                <li class="list-group-item">Title: {{ listdetails.title }}</li>
-                <li class="list-group-item">Description: {{ listdetails.description }}</li>
-                <li class="list-group-item">Items: {{ listdetails.list_items }}</li>
-                <li class="list-group-item">Date: {{ listdetails.date }}</li>
-                <h4>Additional info: </h4>
-                <li class="list-group-item">Created on: {{ listdetails.created_on }}</li>
-                <li class="list-group-item">Last updated on: {{ listdetails.updated_on }}</li>
-                <li class="list-group-item">Completed: {{ listdetails.complete }}</li>
+            <ul class="list-group" style="border: 3px solid #6E7DAB;">
+               
+                <li class="list-group-item" style="background-color: #D1E3DD;">Title: {{ listdetails.title }}</li>
+                <li class="list-group-item" style="background-color: #D1E3DD;">Description: {{ listdetails.description }}</li>
+                <li class="list-group-item" style="background-color: #D1E3DD;">Items: {{ listdetails.list_items }}</li>
+                <li class="list-group-item" style="background-color: #D1E3DD;">Date: {{ listdetails.date }}</li>
+                <li class="list-group-item" style="background-color: #D1E3DD;">Created on: {{ listdetails.created_on }}</li>
+                <li class="list-group-item" style="background-color: #D1E3DD;">Last updated on: {{ listdetails.updated_on }}</li>
+                <li class="list-group-item" style="background-color: #D1E3DD;">Completed: {{ listdetails.complete }}</li>
             </ul>
+            <br>
+            <a href={% url 'updatelists' listdetails.id %} class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Edit List</a>
+    <a href={% url 'delete' listdetails.id %} class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Delete List</a>
+            
              
-            <div class="list-group">
-                <h4>Actions:</h4>
-                <a href={% url 'updatelists' listdetails.id %} class="list-group-item list-group-item-action">Update list</a>
-                <a href={% url 'delete' listdetails.id %} class="list-group-item list-group-item-action">Delete list</a>
-            </div>
 
             <table>
                 {% for item in items %}
