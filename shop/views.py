@@ -4,6 +4,7 @@ from django.views.generic import ListView, DetailView, UpdateView, CreateView, D
 from .forms import ListForm
 from django.urls import reverse, reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.models import User
 
 # Create your views here.
 
@@ -20,7 +21,7 @@ class CreateList(LoginRequiredMixin, CreateView):
     def get_success_url(self):
         return reverse_lazy('lists')
 
-    def form_invalid(self, form):
+    def form_valid(self, form):
         form.instance.user = self.request.user
         return super(CreateList, self).form_valid(form)
 
