@@ -3,10 +3,12 @@
     {% block content %}
 
 
-<h1>Delete this shopping list?</h1>
-<form method=post>{% csrf_token %}
+<h2 style="color: #575366">Delete this shopping list?</h2>
+
+<form method=post>
+    {% csrf_token %}
     {{ form.as_p }}
-    <input type="submit" value="Delete">
+    <input type="submit" value="Delete" class="form-control">
 </form>
 
 {% endblock %}

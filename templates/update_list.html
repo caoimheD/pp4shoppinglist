@@ -2,15 +2,15 @@
 
 {% block content %}
 
-<div class="container-fluid" style="background-color: lavender;">
+<div class="container-fluid">
     <div class="row">
 
         <div class="col-sm">
 
-            <h3>Update your list</h3>
+            <h3 style="text-align: center; color: #575366">Edit your list</h3>
 
             <form method="POST">
-                <div class="form-row align-items-center">
+                <div class="form-row align-items-center" style="border: 3px solid #6E7DAB;">
                     <div class="col-sm-3 my-1">
                         {% csrf_token %}
                         {{ form.as_p }}
@@ -21,9 +21,6 @@
 
         </div>
         
-        <div class="col-sm">
-            {% load static %} <img src="{% static "/media/shopbag.jpg" %}" class="img-fluid" alt="Shopping Bag">
-        </div>
 
     </div>
 </div>
