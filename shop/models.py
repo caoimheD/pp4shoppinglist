@@ -5,7 +5,7 @@ from datetime import datetime
 
 
 class List(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
     title = models.CharField(max_length=50, null=False, blank=False, default=None)
     description = models.TextField()
     list_items = models.TextField(default="", blank=False)

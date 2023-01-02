@@ -3,6 +3,7 @@ from .models import List
 from django.views.generic import ListView, DetailView, UpdateView, CreateView, DeleteView
 from .forms import ListForm
 from django.urls import reverse, reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.
 
@@ -11,7 +12,7 @@ def home_page(request):
     return render(request, '../templates/base.html')
 
 
-class CreateList(CreateView):
+class CreateList(LoginRequiredMixin, CreateView):
     model = List
     fields = 'title', 'description', 'date', 'list_items', 'complete'
     template_name = '../templates/create_list.html'
@@ -19,11 +20,20 @@ class CreateList(CreateView):
     def get_success_url(self):
         return reverse_lazy('lists')
 
+    def form_invalid(self, form):
+        form.instance.user = self.request.user
+        return super(CreateList, self).form_valid(form)
+
 
 class ShopList(ListView):
     model = List
     template_name = '../templates/shop_list.html'
     context_object_name = 'shoppinglists'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['shoppinglists'] = context['shoppinglists'].filter(user=self.request.user)
+        return context
 
 
 class ListDetail(DetailView):
