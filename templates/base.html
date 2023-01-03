@@ -15,60 +15,69 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+  <!-- Static CSS -->
+  <link rel="stylesheet" type="text/css" href="{% static '../static/css/style.css' %}"/>
 </head>
 
-<body style="background-color: #D1E3DD;">
+<body>
 
-  <div class="jumbotron text-center" style="margin-bottom:0; background-color: #575366; color: #D1E3DD;">
+  <div class="jumbotron text-center header">
     <h1>Plan your shopping!</h1>
     <p>Create personalized lists today!</p>
   </div>
 
   <nav class="navbar navbar-expand-sm">
-
     <!-- Links -->
-    <ul class="navbar-nav">
+    <ul class="nav">
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'home' %}">Home</a>
+        <a class="nav-link links" href="{% url 'home' %}">Home</a>
       </li>
       {% if user.is_authenticated %}
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'lists' %}">Your Lists</a>
+        <a class="nav-link links" href="{% url 'lists' %}">Your Lists</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
+        <a class="nav-link links" href="{% url 'account_logout' %}">Logout</a>
       </li>
       {% else %}
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'account_signup' %}">Register</a>
+        <a class="nav-link links" href="{% url 'account_signup' %}">Register</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'account_login' %}">Login</a>
+        <a class="nav-link links" href="{% url 'account_login' %}">Login</a>
       </li>
       {% endif %}
     </ul>
   </nav>
 
   <br>
- 
+
   {% block content %}
   <div class="container-fluid">
 
     <div class="row">
 
       <div class="col-sm">
-        {% load static %} <img src="{% static "/media/shopbag.jpg" %}" class="img-fluid" alt="Shopping Bag">
+        {% load static %} <img src="{% static "/media/shoppingbags.jpg" %}" class="img-fluid" alt="Shopping Bag">
       </div>
 
+      <div class="col-sm textbox">
+        <p>
+          With this website you can create your own personalized shoppings lists - create as many lists as you need and
+          update them at anytime!
 
-      <div class="col-sm" style="background-color: lavender;">col-sm</div>
-       <!-- 
-        <div class="col-sm">
-          {% load static %} <img src="{% static "/media/foodshop.jpg" %}" class="img-fluid" alt="Shopping Bag"> 
-        </div>
-        -->
+          <ul>
+            <li>Create new lists</li>
+            <li>Edit your lists as needed</li>
+            <li>Set a due date</li>
+            <li>Add and remove items at any time</li>
+            <li>Mark as complete and delete if necessary</li>
+          </ul>
 
+          <br>
+          Create an account to get started!
+        </p>
+      </div>
     </div>
 
 

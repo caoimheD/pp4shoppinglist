@@ -1,0 +1,30 @@
+* {
+    font-family: 
+}
+
+body {
+    background-color: #D1E3DD;
+}
+
+.header {
+    margin-bottom:0;
+    background-color: #575366;
+    color: #D1E3DD;
+}
+
+.textbox {
+    color: #575366;
+    font-weight: 450;
+}
+
+.links {
+    text-decoration: none;
+    color: #D1E3DD;
+    background-color: #575366;
+}
+
+.links:hover {
+    text-decoration: none;
+    color:  #575366;
+    background-color: #D1E3DD;
+}
