@@ -1,16 +1,21 @@
 {% extends "base.html" %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
     {% block content %}
     <h1>Add an item</h1>
+
+    <input type="hidden" name="list_id" value="{{ listdetails.pk }}">
+    <form method="POST ['listdetails.id']">
+        
+        <div class="form-row align-items-center" style="border: 3px solid #6E7DAB;">
+            <div class="col-sm-3 my-1">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" value="Save"  class="form-control">
+            </div>
+        </div>
+    </form>
+
+  <!--  
     <form method="POST" action="add">
         {% csrf_token %}
         <div>
@@ -31,8 +36,6 @@
             <button type="submit">Add Item</button>
         </div>
     </form>
+    --> 
 
     {% endblock %}
-
-</body>
-</html>

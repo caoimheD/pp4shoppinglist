@@ -4,11 +4,20 @@ from cloudinary.models import CloudinaryField
 from datetime import datetime
 
 
+class Item(models.Model):
+    name = models.TextField(max_length=50, null=False, blank=False, default=None)
+    quantity = models.IntegerField(default=1, null=False, blank=False)
+
+    def __str__(self):
+        return self.name
+
+
 class List(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
     title = models.CharField(max_length=50, null=False, blank=False, default=None)
-    description = models.TextField()
+    description = models.TextField(max_length=50, null=False, blank=False, default=None)
     list_items = models.TextField(default="", blank=False)
+    items = models.ForeignKey(Item, on_delete=models.CASCADE)
     date = models.DateField(null=True, blank=True, default=datetime.today)
     updated_on = models.DateTimeField(auto_now=True)
     created_on = models.DateTimeField(auto_now=True)
