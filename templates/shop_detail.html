@@ -5,13 +5,13 @@
 {% block content %}
 
 <div class="container-fluid">
-<br>
+    <br>
     <div class="row">
 
         <div class="col-sm">
 
             <ul class="list-group" style="border: 3px solid #6E7DAB;">
-               
+
                 <li class="list-group-item listdetails">Title: {{ listdetails.title }}</li>
                 <li class="list-group-item listdetails">Description: {{ listdetails.description }}</li>
                 <li class="list-group-item listdetails">Items: {{ listdetails.list_items }}</li>
@@ -20,15 +20,28 @@
                 <li class="list-group-item listdetails">Last updated on: {{ listdetails.updated_on }}</li>
                 <li class="list-group-item listdetails">Completed: {{ listdetails.complete }}</li>
                 <li class="list-group-item listdetails">Items: {{ listdetails.items }}</li>
-                <li class="list-group-item listdetails">Items: {{ itemdetails.name }}</li>
-            </ul>
-            <br>
-    <a href={% url 'updatelists' listdetails.id %} class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Edit List</a>
-    <a href={% url 'delete' listdetails.id %} class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Delete List</a>
-    <a href="{% url 'additems' listdetails.id %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Add item</a>
 
-            
-             
+
+            </ul>
+
+            {% for item in items %}
+
+            <p> Items: {{ item.name }} </p>
+            <p> Items: {{ itemdetails.name }} </p>
+            <p> Items: {{ item }} </p>
+
+        {% endfor %}
+
+            <br>
+            <a href={% url 'updatelists' listdetails.id %} class="btn btn-primary btn-lg active" role="button"
+                aria-pressed="true">Edit List</a>
+            <a href={% url 'delete' listdetails.id %} class="btn btn-primary btn-lg active" role="button"
+                aria-pressed="true">Delete List</a>
+            <a href="{% url 'additems' listdetails.id %}" class="btn btn-primary btn-lg active" role="button"
+                aria-pressed="true">Add item</a>
+
+
+
 
             <table>
                 {% for item in items %}
@@ -48,4 +61,3 @@
 </div>
 
 {% endblock %}
-

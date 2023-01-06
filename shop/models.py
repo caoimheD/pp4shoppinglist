@@ -29,3 +29,12 @@ class List(models.Model):
     def __str__(self):
         return self.title
 
+
+class ShoppingItems(models.Model):
+    name = models.TextField(max_length=50, null=False, blank=False, default=None)
+    quantity = models.IntegerField(default=1, null=False, blank=False)
+    list = models.ForeignKey(List, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
+

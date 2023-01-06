@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponse, redirect
-from .models import List, Item
+from .models import List, Item, ShoppingItems
 from django.views.generic import ListView, DetailView, UpdateView, CreateView, DeleteView
 from .forms import ListForm
 from django.urls import reverse, reverse_lazy
@@ -13,9 +13,12 @@ def home_page(request):
     return render(request, '../templates/base.html')
 
 
+# Views for lists
+
+
 class CreateList(CreateView):
     model = List
-    fields = 'title', 'description', 'date', 'list_items', 'item', 'complete'
+    fields = 'title', 'description', 'date', 'list_items', 'items', 'complete'
     template_name = '../templates/create_list.html'
 
     def get_success_url(self):
@@ -53,21 +56,6 @@ class UpdateList(UpdateView):
         return reverse_lazy('details', kwargs={'pk': self.object.pk})
 
 
-class AddItems(CreateView):
-    model = Item
-    fields = 'name', 'quantity'
-    template_name = '../templates/add_item.html'
-    context_object_name = 'additems'
-
-    def get_success_url(self):
-        return reverse_lazy('details', kwargs={'pk': self.object.pk})
-
-class ItemDetail(DetailView):
-    model = Item
-    template_name = '../templates/shop_detail.html'
-    context_object_name = 'itemdetails'
-
-
 class DeleteList(DeleteView):
     model = List
     template_name = '../templates/delete_list.html'
@@ -75,14 +63,31 @@ class DeleteList(DeleteView):
     def get_success_url(self):
         return reverse_lazy('lists')
 
+# Views for items
 
-def add_item(request):
-    if request.method == 'POST':
-        name = request.POST.get('item_name')
-        done = 'done' in request.POST
-        Item.objects.create(name=name, done=done)
 
-        return redirect('lists')
-    return render(request, '../templates/add_item.html')
+class AddItems(UpdateView):
+    model = ShoppingItems
+    fields = 'name', 'quantity', 'list'
+    template_name = '../templates/add_item.html'
+    context_object_name = 'additems'
+
+    def get_success_url(self):
+        return reverse_lazy('details', kwargs={'pk': self.object.pk})
+
+
+class ItemDetail(DetailView):
+    model = ShoppingItems
+    template_name = '../templates/shop_detail.html'
+    context_object_name = 'itemdetails'
+
+
+class Items(ListView):
+    model = ShoppingItems
+    template_name = '../templates/shop_detail.html'
+    context_object_name = 'items'
+
+
+
 
 
