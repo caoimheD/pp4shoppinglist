@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponse, redirect
-from .models import List, Item, ShoppingItems
+from .models import List, Item, ShoppingItem, ItemsBuy
 from django.views.generic import ListView, DetailView, UpdateView, CreateView, DeleteView
 from .forms import ListForm
 from django.urls import reverse, reverse_lazy
@@ -48,7 +48,7 @@ class ListDetail(DetailView):
 
 class UpdateList(UpdateView):
     model = List
-    fields = 'title', 'description', 'date', 'list_items', 'complete', 'items'
+    fields = 'title', 'description', 'date', 'complete',
     template_name = '../templates/update_list.html'
     context_object_name = 'updatelist'
 
@@ -65,29 +65,27 @@ class DeleteList(DeleteView):
 
 # Views for items
 
-
-class AddItems(UpdateView):
-    model = ShoppingItems
-    fields = 'name', 'quantity', 'list'
-    template_name = '../templates/add_item.html'
-    context_object_name = 'additems'
-
-    def get_success_url(self):
-        return reverse_lazy('details', kwargs={'pk': self.object.pk})
+"""
+class ItemList(ListView):
+    model = ItemsBuy
+    template_name = '../templates/shop_detail.html'
+    context_object_name = 'itemslist'
 
 
 class ItemDetail(DetailView):
-    model = ShoppingItems
-    template_name = '../templates/shop_detail.html'
-    context_object_name = 'itemdetails'
-
-
-class Items(ListView):
-    model = ShoppingItems
+    model = ItemsBuy
     template_name = '../templates/shop_detail.html'
     context_object_name = 'items'
 
 
+"""
 
 
+class AddItems(UpdateView):
+    model = List
+    fields = 'list_items',
+    template_name = '../templates/add_item.html'
+
+    def get_success_url(self):
+        return reverse_lazy('details', kwargs={'pk': self.object.pk})
 

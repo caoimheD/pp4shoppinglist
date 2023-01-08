@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 
     {% block content %}
-    <h1>Add an item</h1>
 
     <form method="POST">
         
@@ -14,7 +13,8 @@
         </div>
     </form>
 
-  <!--  
+
+<!--
     <form method="POST" action="add">
         {% csrf_token %}
         <div>
@@ -26,15 +26,15 @@
 
         <div>
             <p>
-                <label for="id_done">Done: </label>
-                <input type="checkbox" id="id_done" name="done">
+                <label for="id_done">Quantity: </label>
+                <input type="text" id="id_qunatity" name="quantity">
             </p>
         </div>
 
         <div>
-            <button type="submit">Add Item</button>
+            <button type="submit">Add item</button>
         </div>
     </form>
-    --> 
+-->
 
     {% endblock %}

@@ -12,6 +12,14 @@ class Item(models.Model):
         return self.name
 
 
+class ItemsBuy(models.Model):
+    name = models.TextField(max_length=50, null=False, blank=False, default=None)
+    quantity = models.IntegerField(default=1, null=False, blank=False)
+
+    def __str__(self):
+        return self.name
+
+
 class List(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
     title = models.CharField(max_length=50, null=False, blank=False, default=None)
@@ -22,6 +30,7 @@ class List(models.Model):
     updated_on = models.DateTimeField(auto_now=True)
     created_on = models.DateTimeField(auto_now=True)
     complete = models.BooleanField(default=False)
+    itemsbuy = models.ManyToManyField(ItemsBuy)
 
     class Meta:
         ordering = ['created_on']
@@ -30,7 +39,7 @@ class List(models.Model):
         return self.title
 
 
-class ShoppingItems(models.Model):
+class ShoppingItem(models.Model):
     name = models.TextField(max_length=50, null=False, blank=False, default=None)
     quantity = models.IntegerField(default=1, null=False, blank=False)
     list = models.ForeignKey(List, on_delete=models.CASCADE)
