@@ -4,15 +4,7 @@ from cloudinary.models import CloudinaryField
 from datetime import datetime
 
 
-class Item(models.Model):
-    name = models.TextField(max_length=50, null=False, blank=False, default=None)
-    quantity = models.IntegerField(default=1, null=False, blank=False)
-
-    def __str__(self):
-        return self.name
-
-
-class ItemsBuy(models.Model):
+class Items(models.Model):
     name = models.TextField(max_length=50, null=False, blank=False, default=None)
     quantity = models.IntegerField(default=1, null=False, blank=False)
 
@@ -25,25 +17,14 @@ class List(models.Model):
     title = models.CharField(max_length=50, null=False, blank=False, default=None)
     description = models.TextField(max_length=50, null=False, blank=False, default=None)
     list_items = models.TextField(default="", blank=False)
-    items = models.ForeignKey(Item, on_delete=models.CASCADE)
-    date = models.DateField(null=True, blank=True, default=datetime.today)
+    dueDate = models.DateField(null=True, blank=True, default=datetime.today)
     updated_on = models.DateTimeField(auto_now=True)
     created_on = models.DateTimeField(auto_now=True)
     complete = models.BooleanField(default=False)
-    itemsbuy = models.ManyToManyField(ItemsBuy)
+    itemsbuy = models.ManyToManyField(Items)
 
     class Meta:
         ordering = ['created_on']
 
     def __str__(self):
         return self.title
-
-
-class ShoppingItem(models.Model):
-    name = models.TextField(max_length=50, null=False, blank=False, default=None)
-    quantity = models.IntegerField(default=1, null=False, blank=False)
-    list = models.ForeignKey(List, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.name
-

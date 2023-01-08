@@ -15,11 +15,10 @@
                 <li class="list-group-item listdetails">Title: {{ listdetails.title }}</li>
                 <li class="list-group-item listdetails">Description: {{ listdetails.description }}</li>
                 <li class="list-group-item listdetails">Items: {{ listdetails.list_items }}</li>
-                <li class="list-group-item listdetails">Date: {{ listdetails.date }}</li>
+                <li class="list-group-item listdetails">Date due: {{ listdetails.dueDate }}</li>
                 <li class="list-group-item listdetails">Created on: {{ listdetails.created_on }}</li>
                 <li class="list-group-item listdetails">Last updated on: {{ listdetails.updated_on }}</li>
                 <li class="list-group-item listdetails">Completed: {{ listdetails.complete }}</li>
-                <li class="list-group-item listdetails">Items: {{ listdetails.itemsbuy.name }}</li>
 
 
             </ul>
@@ -31,22 +30,6 @@
                 aria-pressed="true">Delete List</a>
             <a href="{% url 'additems' listdetails.id %}" class="btn btn-primary btn-lg active" role="button"
                 aria-pressed="true">Edit items</a>
-
-
-
-
-            <table>
-                {% for item in items %}
-                <tr>
-                    {% if item.done %}
-                    <td><strike>{{ item.name }}</strike></td>
-                    {% else %}
-                    <td>{{ item.name }}</td>
-                    {% endif %}
-                </tr>
-                {% endfor %}
-            </table>
-
 
         </div>
     </div>

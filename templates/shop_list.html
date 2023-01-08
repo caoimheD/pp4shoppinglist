@@ -13,18 +13,18 @@
 
             {% for shoppinglist in shoppinglists %}
 
-                    <div class="card text-center mb-3" style="border: 3px solid #6E7DAB; background-color: #D1E3DD;">
-                        <div class="card-body">
-                            <h5 class="card-title"> {{ shoppinglist.title }} </h5>
-                            <h6 class="card-subtitle mb-2 text-muted">{{ shoppinglist.description }}</h6>
-                            <p class="card-text">Complete: {{ shoppinglist.complete }}</p>
-                            <a href={% url 'details' shoppinglist.id %} class="card-link">See details</a>
-                        </div>
-                    </div>
-
+            <div class="card text-center mb-3" style="border: 3px solid #6E7DAB; background-color: #D1E3DD;">
+                <div class="card-body">
+                    {% if shoppinglist.complete %}
+                    <h5 class="card-title"><strike>{{ shoppinglist.title }}</strike></h5>
+                    {% else %}
+                    <h5 class="card-title">{{ shoppinglist.title }}</h5>
+                    {% endif %}
+                    <h6 class="card-subtitle mb-2 text-muted">{{ shoppinglist.description }}</h6>
+                    <a href={% url 'details' shoppinglist.id %} class="card-link">See details</a>
+                </div>
+            </div>
             {% endfor %}
-
-        
 
         </div>
     </div>
