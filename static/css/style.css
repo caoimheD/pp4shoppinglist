@@ -5,30 +5,43 @@
 }
 
 body {
-    background-color: #D1E3DD;
+    background-color: #F2F4F3;
+
+}
+
+.background{
+    background: url('../media/Untitled.jpeg') center center no-repeat;
+    height: 100vh;
+    background-size: cover;
+}
+
+img {
+    opacity: 0.8;
 }
 
 .header {
     margin-bottom:0;
-    background-color: #575366;
-    color: #D1E3DD;
+    color: #22333B;
+    background-color: #A9927D;
 }
 
 .textbox {
     color: #575366;
     font-weight: 450;
     font-size: large;
+    border: 2px solid #A9927D;
 }
 
 .links {
     text-decoration: none;
-    color:  #5762D5;
+    color:  #A9927D;
+    
 }
 
 .links:hover {
     text-decoration: none;
-    color: #32292F;
-    background-color: #5762D5;
+    color: #F2F4F3;
+    background-color: #A9927D;
 }
 
 .listdetails {

@@ -4,9 +4,10 @@ from cloudinary.models import CloudinaryField
 from datetime import datetime
 
 
-class Items(models.Model):
+class Item(models.Model):
     name = models.TextField(max_length=50, null=False, blank=False, default=None)
     quantity = models.IntegerField(default=1, null=False, blank=False)
+    list = models.ForeignKey('List', on_delete=models.CASCADE, default=None)
 
     def __str__(self):
         return self.name
@@ -21,7 +22,6 @@ class List(models.Model):
     updated_on = models.DateTimeField(auto_now=True)
     created_on = models.DateTimeField(auto_now=True)
     complete = models.BooleanField(default=False)
-    itemsbuy = models.ManyToManyField(Items)
 
     class Meta:
         ordering = ['created_on']
