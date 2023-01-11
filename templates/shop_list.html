@@ -4,7 +4,7 @@
 
 <div class="container-fluid">
 
-    <a href={% url 'new' %} class="btn btn-primary btn-lg active" role="button" aria-pressed="true">New List</a>
+    <a href={% url 'new' %} class="button btn-lg active" role="button" aria-pressed="true">New List</a>
 
     <div class="row">
 
@@ -13,7 +13,7 @@
 
             {% for shoppinglist in shoppinglists %}
 
-            <div class="card text-center mb-3" style="border: 3px solid #6E7DAB; background-color: #D1E3DD;">
+            <div class="card text-center mb-3 list">
                 <div class="card-body">
                     {% if shoppinglist.complete %}
                     <h5 class="card-title"><strike>{{ shoppinglist.title }}</strike></h5>

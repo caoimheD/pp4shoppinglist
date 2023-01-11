@@ -2,6 +2,7 @@
 
 * {
     font-family: 'Ubuntu', sans-serif;
+    
 }
 
 body {
@@ -17,6 +18,7 @@ body {
 
 img {
     opacity: 0.8;
+    max-height: fit-content;
 }
 
 .header {
@@ -26,10 +28,15 @@ img {
 }
 
 .textbox {
-    color: #575366;
     font-weight: 450;
     font-size: large;
-    border: 2px solid #A9927D;
+    color: #22333B;
+}
+
+h2 {
+    text-align: center;
+    color: #22333B;
+
 }
 
 .links {
@@ -45,5 +52,23 @@ img {
 }
 
 .listdetails {
-    background-color: #D1E3DD;
+    background-color: #E7E0DA;
+}
+
+.list {
+    border: 3px solid #22333B;
+    background-color: #E7E0DA;
+}
+
+.button {
+    
+    color: #22333B;
+    background-color: #A9927D;
+    text-decoration: none;
+}
+
+.button:hover {
+    color:  #F2F4F3;
+    background-color: #A9927D;
+    text-decoration: none;
 }

@@ -4,7 +4,8 @@
 <html class="h-100">
 
 <head>
-  <title>Shopping!</title>
+  <title>Shopping Lists</title>
+  <link rel="icon" type="image/x-icon" href="../static/media/cart-shopping-solid.svg">
 
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
@@ -21,6 +22,8 @@
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <!-- Static CSS -->
   <link rel="stylesheet" type="text/css" href="{% static '../static/css/style.css' %}" />
+
+  <script src="https://kit.fontawesome.com/f9678b5731.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -75,24 +78,21 @@
   <div class="container-fluid">
     <div class="row">
 
-      <div class="col-sm">
+      <div class="col-sm-8">
         {% load static %} <img src="{% static "/media/shopbag.jpg" %}" class="img-fluid" alt="Shopping Bag">
       </div>
 
-      <div class="col-sm textbox">
-        <p>
-          With this website you can create your own personalized shoppings lists - create as many lists as you need and
-          update them at anytime!
 
+
+      <div class="col-sm-4 textbox justify-content-center">
+        <br>
+        <h2>Welcome! <i class="fa-solid fa-cart-shopping"></i></h2>
+        <p> Create your own personalized shoppings lists:
           <ul>
-            <li>Create new lists</li>
-            <li>Edit your lists as needed</li>
-            <li>Set a due date</li>
-            <li>Add and remove items at any time</li>
-            <li>Mark as complete and delete if necessary</li>
+            <li>Create as many lists as you need</li>
+            <li>Edit, update your lists and items as needed</li>
+            <li>Set a due date and mark as complete</li>
           </ul>
-
-          <br>
           Create an account to get started!
         </p>
       </div>

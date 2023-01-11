@@ -10,7 +10,7 @@
 
         <div class="col-sm">
 
-            <ul class="list-group" style="border: 3px solid #6E7DAB;">
+            <ul class="list-group" style="border: 3px solid #22333B;">
 
                 <li class="list-group-item listdetails">Title: {{ listdetails.title }}</li>
                 <li class="list-group-item listdetails">Description: {{ listdetails.description }}</li>
@@ -24,11 +24,11 @@
             </ul>
         
             <br>
-            <a href={% url 'updatelists' listdetails.id %} class="btn btn-primary btn-lg active" role="button"
+            <a href={% url 'updatelists' listdetails.id %} class="button btn-lg active" role="button"
                 aria-pressed="true">Edit List</a>
-            <a href={% url 'delete' listdetails.id %} class="btn btn-primary btn-lg active" role="button"
+            <a href={% url 'delete' listdetails.id %} class="button btn-lg active" role="button"
                 aria-pressed="true">Delete List</a>
-            <a href="{% url 'additems' listdetails.id %}" class="btn btn-primary btn-lg active" role="button"
+            <a href="{% url 'additems' listdetails.id %}" class="btn-lg active button" role="button"
                 aria-pressed="true">Edit items</a>
 
         </div>
