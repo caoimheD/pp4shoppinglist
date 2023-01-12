@@ -7,10 +7,10 @@
 
         <div class="col-sm">
 
-            <h3 style="text-align: center; color: #575366">Edit your list</h3>
+            <h3>Edit your list</h3>
 
             <form method="POST">
-                <div class="form-row align-items-center" style="border: 3px solid #6E7DAB;">
+                <div class="form-row align-items-center">
                     <div class="col-sm-3 my-1">
                         {% csrf_token %}
                         {{ form.as_p }}
