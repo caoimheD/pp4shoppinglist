@@ -57,14 +57,32 @@ The original idea was to have the lists display all on one page, with the update
 
 ![nav](static/media/nav.jpg "Navigation")
 
+The navigation bar gives the user different options based on their logged in/out status. When users are signed out, or not yet registered, they will see the options for the homepage, to sign up or login. Once users register and/or login, the navigation bar changes to show the homepage, their lists page and a logout option. The purpose of these different navigation options is to provide a personalized experience to the user and to recognize their account status. The options presented to them are therefore relevant and useful to that specific user.
+
 <a name="listspage"></a>
 ### Your Lists page
+
+The 'your lists' page is also personalized and tailored to the specific user that is logged in. The views are user specific, meaning that only the lists that belong to the logged in user will be visible. On this page, users will see all of the lists they have created. The title, description and a 'see details' option will be shown to them. If the list has been marked as complete, the title will have a strike through it.
 
 <a name="listdetails"></a>
 ### List Details page
 
+When users click on the 'see details' link on the 'your lists' page, this will bring them into the list details page for that specific list. On this page, users can see all details related to that list such as title, description, date created, last updated, due date and items. Other than viewing, users can also take actions on this page with 3 different buttons.
+
+The 'edit list' button brings up a form with the title, description, due date and complete status fields. Users can edit these fields and mark the list as complete, save the form and they will be redirected to the list details page which will now change to show the updates made.
+
+The 'delete list' button will bring up a confirmation page asking if the user wants to delete the list. When this is confirmed, the list is deleted and the user is redirected to the 'your lists' page. The deleted list no longer shows there, as it has been deleted.
+
+The 'edit items' button ...
+
 <a name="registration"></a>
 ### Register/login/logout
+
+These options are displayed on the navigation bar. Click on 'register' opens a form which asks the user to select a username and password. There is an option field for an email address. Once the fields are filled in, users can then click on the 'sign up' button and this will create their account.
+
+If users click on the 'login' option, this brings up a form where they insert their username and password. When clicking on 'sign in', they are redirected back to the homepage with the updated navigation options and will see a success message confirming they have signed in.
+
+When users have finished their session and are ready to logout, they can use the 'logout' option on the navigation bar. They are asked to confirm if they want to logout and then have to click on the 'sign out' button to confirm this. Again, users will see a success message to confirm that they have successfully been logged out.
 
 <a name="shoppinglists"></a>
 ### Shopping lists: create, read, update, delete
@@ -74,6 +92,10 @@ The original idea was to have the lists display all on one page, with the update
 
 <a name="footer"></a>
 ### Header and Footer
+
+The header is a simple design with text that lets the user know what the purpose of the website is and what they can expect from the site.
+
+The footer is again a simple design and contains links to social media sites and pages.
 
 
 <a name="technologies"></a>
