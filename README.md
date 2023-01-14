@@ -87,6 +87,8 @@ When users have finished their session and are ready to logout, they can use the
 <a name="shoppinglists"></a>
 ### Shopping lists: create, read, update, delete
 
+The shopping lists are the purpose of the website so this is the main feature that users will interact with. As detailed in the section for the 'your lists' and 'see details' pages, there are different button options which allow the user to interact with their lists. Users have full CRUD functionality with any list they create as they can view the list, update it and delete it at any time.
+
 <a name="listitems"></a>
 ### Shopping list items: add and remove items
 
@@ -156,8 +158,12 @@ PEP8
 <a name="responsivetesting"></a>
 ### Responsiveness
 
+Responsiveness testing was done through Chrome developer tools, by using the options to select different devices and also manually adjust the screen size. Based on the results of these, minor changes were made to the layout to ensure it is still user friendly on all screen sizes.
+
 <a name="lighthousetesting"></a>
 ### Lighthouse
+
+
 
 <a name="othertesting"></a>
 ### Other testing

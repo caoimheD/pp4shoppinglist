@@ -23,14 +23,14 @@ img {
 
 .header {
     margin-bottom:0;
-    color: #22333B;
+    color: #F2F4F3;
     background-color: #A9927D;
 }
 
 .textbox {
-    font-weight: 450;
     font-size: large;
     color: #22333B;
+    text-align: center;
 }
 
 h2, h3 {
@@ -41,14 +41,15 @@ h2, h3 {
 
 .links {
     text-decoration: none;
-    color:  #A9927D;
+    color:  #F2F4F3;
+    background-color: #A9927D;
     
 }
 
 .links:hover {
     text-decoration: none;
-    color: #F2F4F3;
-    background-color: #A9927D;
+    color:  #A9927D;
+    background-color: #F2F4F3;
 }
 
 .listdetails {
