@@ -17,7 +17,18 @@
                 <li class="list-group-item listdetails">Created on: {{ listdetails.created_on }}</li>
                 <li class="list-group-item listdetails">Last updated on: {{ listdetails.updated_on }}</li>
 
+                
+                {% for item in listdetails.item_set.all %}
+
+                <li class="list-group-item listdetails">Item/quantity: {{ item.quantity }} {{ item.name }}  <a href={% url 'deleteitem' item.id %}>Delete</a>  </li>
+                
+
+                {% endfor %}
+            
+
             </ul>
+
+         
         
             <br>
             <a href={% url 'updatelists' listdetails.id %} class="button btn-lg active" role="button"
@@ -26,6 +37,10 @@
                 aria-pressed="true">Delete List</a>
             <a href="{% url 'additems' listdetails.id %}" class="btn-lg active button" role="button"
                 aria-pressed="true">Edit items</a>
+            <a href="{% url 'additem' listdetails.id %}" class="btn-lg active button" role="button"
+                aria-pressed="true">Add an item 2</a>
+            <a href="{% url 'deleteitem' listdetails.id %}" class="btn-lg active button" role="button"
+                aria-pressed="true">Delete an item 2</a>
 
         </div>
     </div>

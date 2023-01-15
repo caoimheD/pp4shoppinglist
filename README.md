@@ -124,6 +124,8 @@ The footer is again a simple design and contains links to social media sites and
 <a name="technologies"></a>
 ## Technologies
 
+Model and class based views
+
 <a name="testing"></a>
 ## Testing
 
