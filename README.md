@@ -34,6 +34,8 @@ This is a useful tool for people that may need to make a lot of purchases in a s
 
 The current strike through the title for completed lists allows users to see at a glance which lists they no longer need to pay attention to.
 
+The site's ideal user is therefore frequent shoppers who could benefit from having more organization in their shopping experience and the site's goal is to provide that to them through the use of lists.
+
 The User Stories can be found in Github Projects (pp4shoppinglist -> Projects -> pp4shoppinglist) and are displayed in the Kanban board format. Each user story has an acceptance criteria and tasks. The User Stories with must-have criteria and that have been completed are:
 
 - Account registration: As a site user I can create an account so that I can create my shopping list
@@ -47,9 +49,11 @@ There are other User Stories that would allow for more funcitonality of the webs
 
 - Add item: As a user I can add items to lists so that I have all items I need (completed)
 - Delete item: As a user I can delete items so that lists do not contain items no longer needed (completed)
-- Duplicate lists: As a user I can duplicate lists so that if I need to purchase the same items again, I don't need to write them in again (for future versions)
-- Complete items: As a user I can complete individual items so that I can update the list as items are purchased (for future versions)
-- Search/filter lists: As a user I can filter my lists so that I only see relevant lists (for future versions)
+- Duplicate lists: As a user I can duplicate lists so that if I need to purchase the same items again, I don't need to write them in again (future feature)
+- Complete items: As a user I can complete individual items so that I can update the list as items are purchased (future feature)
+- Search/filter lists: As a user I can filter my lists so that I only see relevant lists (future feature)
+
+Future features
 
 These future version features would build on the solid foundation of the website and add more complexity, for example being able to re-use a list would be helpful for shoppers who regularly purchase the same items. The search and filter options would be useful for users that have been using the site for a longer period of time and have a large number of lists. Completing items would allow for users to interact with the list while they are shopping and mark off each item as they purchase it, rather than just completing the whole list at the end.
 
@@ -61,7 +65,31 @@ Wireframes
 
 ![Alt text](static/media/wireframes.jpg "Title")
 
-The original idea was to have the lists display all on one page, with the update and delete buttons. This was changed as it would be too much information on one page when the user has multiple lists and it would get confusing trying to read all of them at once. This page now has a neat list of all of the shopping lists with just the title, description and due date. Users can click on 'see details' to get into another page that has all of the actual items and more information.
+The original idea was to have the lists display all on one page, with the update and delete buttons. This was later changed as it would be too much information on one page when the user has multiple lists and it would get confusing trying to read all of them at once. This page now has a neat list of all of the shopping lists with just the title, description and a 'see details' link. Users can click on this 'see details' to get into another page that has all of the actual items and more information.
+
+Data model and views
+
+There are two models in use on this project, List and Item. The List model contains all of the relevant fields for the list (title, description, user as foreign key, due date, created date, updated date, completion status). The Item model is related to the List model through a foreign key relationship on the list field. This means that the shopping list is a foreign key to the item. The other fields are name and quantity.
+
+Form validation was ensured by the model fields not being allowed to be 'null'. This means that for example without a title, the list cannot be created.
+
+Class based views were used for the CRUD functionality of the lists. This was achieved by importing and using ListView, DetailView, UpdateView, CreateView, DeleteView. These are generic django views that already contain the necessary parts to perform their function (for example create or delete). With these views, it is necessary to specify the model, fields, template name and if necessary a context object name. The form is then generated on the template file with the fields specified.
+
+The views are user specific, meaning that each logged in user can only see lists they created. For the CreateList view, 'form_valid' was used to autopopulate the 'user' field of the model with the data of the logged in user. This ensured that the user field did not appear as a dropdown box and the user could select another user as the list creator. This now works as intended, and when creating a list the user field is not visible, it will automatically populate to whatever user is logged in. The user specific views such as ShopList ensure that the logged in user only sees their lists, this was achieved by using 'get_context_data'. This successfully avoids users viewing the shopping lists of other users.
+
+There were two possible ways of adding items to lists, one was through the use of the text field in the List model (field list_items). An 'edit items' button would open up a form similar the the 'edit list' one, but with just the list_items field. Users could then type in new items or remove existing ones.
+
+![Edit items](static/media/edititems.jpg "Edit items")
+
+![Edit items](static/media/edititems2.jpg "Edit items")
+
+The second option was to make use of the Item model and the foreign key relationship by using the same CreateView/DeleteView as with the lists, with the 'list' field behaving in a similar way to the 'user' field in the List model (have this automatically prepopulate with the list name that is being updated, similar to how the user field is prepopulated with the logged in user data). This would allow users to add and delete individual items though a button, rather than have a text field for everything.
+
+![Edit items](static/media/addanitem.jpg "Add items")
+
+![Edit items](static/media/addanitem2.jpg "Add items")
+
+In the end, it was decided to go with option .. , however for future versions of the website the other option can also be considered. It could also be possible to have both options visible, allowing the user to choose which method they prefer or which one is more suitable to the type of list they need (a text box might suit some types of shopping better than adding each item one at a time). The unused views were deleted to avoid confusion on the views.py file, however the option2 could easily be achieved by..
 
 <a name="features"></a>
 ## Features
@@ -124,7 +152,55 @@ The footer is again a simple design and contains links to social media sites and
 <a name="technologies"></a>
 ## Technologies
 
-Model and class based views
+- Python
+
+The following python modules were installed and used:
+
+asgiref==3.5.2
+
+backports.zoneinfo==0.2.1
+
+cloudinary==1.30.0
+
+dj-database-url==1.0.0
+
+dj3-cloudinary-storage==0.0.6
+
+Django==4.1.3
+
+django-allauth==0.51.0
+
+gunicorn==20.1.0
+
+oauthlib==3.2.2
+
+psycopg2==2.9.5
+
+PyJWT==2.6.0
+
+python3-openid==3.2.0
+
+requests-oauthlib==1.3.1
+
+sqlparse==0.4.3
+
+- CSS and Bootstrap: most of the styling was done with Bootstrap, there is also a custom static css file for some smaller parts of the styling such as colours.
+
+- HTML
+
+- Heroku: The app and website are deployed to Heroku
+
+- ElephantSQL: ElephantSQL was used to create and host the database.
+
+- Fontawesome: Fontawesome was used for the different icons that are in use on the site, such as the shopping cart icon on the homepage.
+
+- JavaScript
+
+- Django: The website is built using django framework
+
+- Balasmiq: used for the creation of the wireframes
+
+- Google Fonts
 
 <a name="testing"></a>
 ## Testing
@@ -170,18 +246,28 @@ List Details page
 | Confirm list deletion  | List is deleted, redirects to your lists page | pass | 
 | Edit items button  |  | pass | 
 
+This testing covers not just the website features but also the user story testing. The above tables cover all parts of the must-have user stories (registration, login, CRUD functionality on lists)
 
 <a name="validatortesting"></a>
 ### Validator testing
 
 HTML validator testing passed (https://validator.w3.org/)
+
 CSS validator testing passed (https://jigsaw.w3.org/css-validator/)
-PEP8
+
+PEP8 http://pep8online.com/
+
+https://jshint.com/
+
 
 <a name="responsivetesting"></a>
 ### Responsiveness
 
 Responsiveness testing was done through Chrome developer tools, by using the options to select different devices and also manually adjust the screen size. Based on the results of these, minor changes were made to the layout to ensure it is still user friendly on all screen sizes.
+
+Some screenshots of devices tested:
+
+
 
 <a name="lighthousetesting"></a>
 ### Lighthouse
@@ -192,7 +278,11 @@ Responsiveness testing was done through Chrome developer tools, by using the opt
 <a name="othertesting"></a>
 ### Other testing
 
+Browsers were tested for compatibility - the live link was used in Google Chrome, Firefox and Safari. The site shows correctly in these browser types.
 
+Bugs
+
+Currently there are no known bugs on the website. Issues that did occur were related to form redirection (to list details page with pk of the list that was being viewed before) and updating specific model fields, however these have been fixed by using reverse_lazy and by specifing in the view which fields of the form are to be visible.
 
 <a name="deployment"></a>
 ## Deployment

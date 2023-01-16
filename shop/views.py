@@ -84,9 +84,13 @@ class ItemList(ListView):
 
 class CreateItem(CreateView):
     model = Item
-    fields = 'name', 'quantity', 'list'
+    fields = 'name', 'quantity',
     template_name = '../templates/additem.html'
     context_object_name = 'create'
+
+    def form_valid(self, form):
+        form.instance.list = List.title
+        return super(CreateItem, self).form_valid(form)
 
     def get_success_url(self):
         return reverse_lazy('lists')
