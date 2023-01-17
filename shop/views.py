@@ -3,6 +3,7 @@ from .models import List, Item
 from django.views.generic import ListView, DetailView, UpdateView, CreateView, DeleteView
 from django.urls import reverse, reverse_lazy
 from django.contrib.auth.models import User
+from django.contrib import messages
 
 
 def home_page(request):
@@ -21,6 +22,7 @@ class CreateList(CreateView):
 
     def form_valid(self, form):
         form.instance.user = self.request.user
+        messages.success(self.request, 'List created successfully!')
         return super(CreateList, self).form_valid(form)
 
 
@@ -50,6 +52,10 @@ class UpdateList(UpdateView):
     def get_success_url(self):
         return reverse_lazy('details', kwargs={'pk': self.object.pk})
 
+    def form_valid(self, form):
+        messages.success(self.request, 'List updated successfully!')
+        return super(UpdateList, self).form_valid(form)
+
 
 class DeleteList(DeleteView):
     model = List
@@ -57,6 +63,10 @@ class DeleteList(DeleteView):
 
     def get_success_url(self):
         return reverse_lazy('lists')
+
+    def form_valid(self, form):
+        messages.success(self.request, 'List deleted successfully!')
+        return super(DeleteList, self).form_valid(form)
 
 # Views for items
 

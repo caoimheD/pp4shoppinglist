@@ -142,6 +142,15 @@ The shopping lists are the purpose of the website so this is the main feature th
 ![Lists](static/media/yourlists.jpg "Lists")
 ![Lists](static/media/listdetails.jpg "Lists")
 
+Success messages are displayed to the user when they create, edit or delete lists. This ensures that they are aware their action has been completed successfully.
+
+![Lists](static/media/listcreated.jpg "Lists")
+
+![Lists](static/media/listupdated.jpg "Lists")
+
+![Lists](static/media/listdeleted.jpg "Lists")
+
+
 <a name="listitems"></a>
 ### Shopping list items: add and remove items
 

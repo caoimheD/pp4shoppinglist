@@ -27,15 +27,16 @@
   <script src="https://kit.fontawesome.com/f9678b5731.js" crossorigin="anonymous"></script>
 </head>
 
-<body>
+<body class="d-flex flex-column min-vh-100">
 
+<!-- Header -->
   <div class="jumbotron text-center header">
     <h1>Plan your shopping!</h1>
     <p>Create personalized lists today!</p>
   </div>
 
+<!-- Links -->
   <nav class="navbar navbar-expand-sm justify-content-center">
-    <!-- Links -->
     <ul class="nav">
       <li class="nav-item">
         <a class="nav-link links" href="{% url 'home' %}">Home</a>
@@ -76,7 +77,6 @@
     </div>
   </div>
 
-
   <!-- Text and images content -->
 
   <div class="container-fluid">
@@ -110,11 +110,10 @@
     </div>
   </div>
 
-
   {% endblock content %}
 
   <!-- Footer -->
-  <footer class="text-center">
+  <footer class="text-center mt-auto">
     <div class="container pt-4">
       <div class="mb-4">
         <!-- Facebook -->

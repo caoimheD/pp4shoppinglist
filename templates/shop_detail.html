@@ -4,6 +4,19 @@
 
 {% block content %}
 
+<!-- Success messages -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            {% for message in messages %}
+            <div class="alert {{ message.tags }} alert-dismissible fade show" id="msg" role="alert">
+                {{ message | safe }}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm">
@@ -17,19 +30,20 @@
                 <li class="list-group-item listdetails">Created on: {{ listdetails.created_on }}</li>
                 <li class="list-group-item listdetails">Last updated on: {{ listdetails.updated_on }}</li>
 
-                
+
                 {% for item in listdetails.item_set.all %}
 
-                <li class="list-group-item listdetails">Item/quantity: {{ item.quantity }} {{ item.name }}  <a href={% url 'deleteitem' item.id %}>Delete</a>  </li>
-                
+                <li class="list-group-item listdetails">Item/quantity: {{ item.quantity }} {{ item.name }} <a
+                        href={% url 'deleteitem' item.id %}>Delete</a> </li>
+
 
                 {% endfor %}
-            
+
 
             </ul>
 
-         
-        
+
+
             <br>
             <a href={% url 'updatelists' listdetails.id %} class="button btn-lg active" role="button"
                 aria-pressed="true">Edit List</a>
@@ -45,3 +59,12 @@
 </div>
 
 {% endblock %}
+
+<!-- Success messages timeout -->
+<script>
+    setTimeout(function () {
+        let messages = document.getElementById('msg');
+        let alert = new bootstrap.Alert(messages);
+        alert.close();
+    }, 3000);
+</script>

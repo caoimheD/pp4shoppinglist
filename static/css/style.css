@@ -1,13 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
 
 * {
-    font-family: 'Ubuntu', sans-serif;
-    
+    font-family: 'Ubuntu', sans-serif; 
 }
 
 body {
     background-color: #F2F4F3;
-
 }
 
 .background{
@@ -36,14 +34,12 @@ img {
 h2, h3 {
     text-align: center;
     color: #22333B;
-
 }
 
 .links {
     text-decoration: none;
     color:  #F2F4F3;
     background-color: #A9927D;
-    
 }
 
 .links:hover {
