@@ -108,6 +108,10 @@ The navigation bar gives the user different options based on their logged in/out
 
 The 'your lists' page is also personalized and tailored to the specific user that is logged in. The views are user specific, meaning that only the lists that belong to the logged in user will be visible. On this page, users will see all of the lists they have created. The title, description and a 'see details' option will be shown to them. If the list has been marked as complete, the title will have a strike through it.
 
+On this page there is an option to create a new list with the 'new list' button. This brings up a form with all fields from the list model (except user). Users can fill this out with the information that they want to have in the list. The from then redirects back to the 'your lists' page they were on and the new list will be visible there.
+
+The date format in the 'due date' field of creating a new list is currently in YYYY-MM-DD format. This can be changed in future versions to DD-MM-YYYY. As submitting the form with the date in any other format other than YYYY-MM-DD will give an error, text has been placed in the new list form to let users know of the expected format.
+
 <a name="listdetails"></a>
 ### List Details page
 
@@ -253,7 +257,11 @@ This testing covers not just the website features but also the user story testin
 
 HTML validator testing passed (https://validator.w3.org/)
 
+![HTML](static/media/htmlpp4.jpg "HTML")
+
 CSS validator testing passed (https://jigsaw.w3.org/css-validator/)
+
+![CSS](static/media/csspp4.jpg "CSS")
 
 PEP8 http://pep8online.com/
 
@@ -289,6 +297,7 @@ Please note that in order to replicate this test the database needs to be change
 Bugs
 
 Currently there are no known bugs on the website. Issues that did occur were related to form redirection (to list details page with pk of the list that was being viewed before) and updating specific model fields, however these have been fixed by using reverse_lazy and by specifing in the view which fields of the form are to be visible.
+
 
 <a name="deployment"></a>
 ## Deployment
