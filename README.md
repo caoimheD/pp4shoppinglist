@@ -280,6 +280,12 @@ Some screenshots of devices tested:
 
 Browsers were tested for compatibility - the live link was used in Google Chrome, Firefox and Safari. The site shows correctly in these browser types.
 
+One automated test was conducted to test if the completed field on the List model defaults to False:
+
+![Test](static/media/testpp4.jpg "Test")
+
+Please note that in order to replicate this test the database needs to be changed to the 'db.sqlite3' database in settings.py. The reason for this is due to a permissions issue for django to create a test database with the elephantsql one. For the test to run, the database was commented out with '#' and the sqlite one had the commented out part removed. After the test was completed, this was then switched back as the elephantsql database is the one in use for the project.
+
 Bugs
 
 Currently there are no known bugs on the website. Issues that did occur were related to form redirection (to list details page with pk of the list that was being viewed before) and updating specific model fields, however these have been fixed by using reverse_lazy and by specifing in the view which fields of the form are to be visible.
