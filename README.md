@@ -261,6 +261,17 @@ List Details page
 
 This testing covers not just the website features but also the user story testing. The above tables cover all parts of the must-have user stories (registration, login, CRUD functionality on lists)
 
+Success messages testing/javascript testing
+
+| Action        | Expected Behaviour  | Result | 
+| ------------- | ------------- | ------------- | 
+| Register/Login  | success message 'Successfully signed in as' | pass | 
+| Logout  | success message 'You have signed out' | pass | 
+| Create list  | success message 'List created successfully!' | pass | 
+| Edit list  | success message 'List updated successfully!' | pass | 
+| Delete list  | success message 'List deleted successfully!' | pass | 
+| Javascript timeout  | messages disappear after 3 seconds | pass | 
+
 <a name="validatortesting"></a>
 ### Validator testing
 
@@ -272,10 +283,7 @@ CSS validator testing passed (https://jigsaw.w3.org/css-validator/)
 
 ![CSS](static/media/csspp4.jpg "CSS")
 
-PEP8 http://pep8online.com/
-
-https://jshint.com/
-
+Python testing was done in Gitpod, with errors showing a red underscore and also in the 'problems' tab. These could then be easily corrected as they arose. Currently there are no issues in the 'problems' tab and no errors showing on any of the pages.
 
 <a name="responsivetesting"></a>
 ### Responsiveness

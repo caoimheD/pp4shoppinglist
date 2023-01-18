@@ -1,6 +1,7 @@
 from django.shortcuts import render, HttpResponse, redirect
 from .models import List, Item
-from django.views.generic import ListView, DetailView, UpdateView, CreateView, DeleteView
+from django.views.generic import ListView, DetailView, UpdateView, \
+    CreateView, DeleteView
 from django.urls import reverse, reverse_lazy
 from django.contrib.auth.models import User
 from django.contrib import messages
@@ -33,7 +34,8 @@ class ShopList(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['shoppinglists'] = context['shoppinglists'].filter(user=self.request.user)
+        context['shoppinglists'] = \
+            context['shoppinglists'].filter(user=self.request.user)
         return context
 
 
@@ -80,7 +82,6 @@ class AddItems(UpdateView):
         return reverse_lazy('details', kwargs={'pk': self.object.pk})
 
 
-
 class ItemList(ListView):
     model = Item
     template_name = '../templates/shop_list.html'
@@ -99,16 +100,21 @@ class CreateItem(CreateView):
     context_object_name = 'create'
 
     def form_valid(self, form):
-        form.instance.list = List.title
+        form.instance.list = List.objects.get(pk=self.kwargs['pk'])
+        messages.success(self.request, 'Item created successfully!')
         return super(CreateItem, self).form_valid(form)
 
     def get_success_url(self):
-        return reverse_lazy('lists')
+        return reverse_lazy('details', kwargs={'pk': self.kwargs['pk']})
 
 
 class DeleteItem(DeleteView):
     model = Item
     template_name = '../templates/delete_item.html'
+
+    def form_valid(self, form):
+        messages.success(self.request, 'Item deleted successfully!')
+        return super(DeleteItem, self).form_valid(form)
 
     def get_success_url(self):
         return reverse_lazy('lists')
