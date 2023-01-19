@@ -30,7 +30,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['pp4shoppinglist.herokuapp.com', 'localhost']
 CSRF_TRUSTED_ORIGINS = ['https://*.gitpod.io']
