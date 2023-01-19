@@ -15,7 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from shop.views import home_page, ShopList, ListDetail, UpdateList, CreateList, DeleteList, AddItems, CreateItem, DeleteItem
+from shop.views import home_page, ShopList, ListDetail, UpdateList, \
+     CreateList, DeleteList, CreateItem, DeleteItem
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 app_name = 'shop'
@@ -29,7 +30,6 @@ urlpatterns = [
     path('lists/details/<int:pk>/update/', UpdateList.as_view(), name='updatelists'),
     path('lists/new/', CreateList.as_view(), name='new'),
     path('lists/details/<int:pk>/delete/', DeleteList.as_view(), name='delete'),
-    path('lists/details/<int:pk>/updateitem/add/', AddItems.as_view(), name='additems'),
     path('lists/details/<int:pk>/newitem/', CreateItem.as_view(), name='additem'),
     path('lists/details/<int:pk>/deleteitem/', DeleteItem.as_view(), name='deleteitem'),
 ]

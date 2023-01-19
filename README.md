@@ -78,19 +78,11 @@ Class based views were used for the CRUD functionality of the lists. This was ac
 
 The views are user specific, meaning that each logged in user can only see lists they created. For the CreateList view, 'form_valid' was used to autopopulate the 'user' field of the model with the data of the logged in user. This ensured that the user field did not appear as a dropdown box and the user could select another user as the list creator. This now works as intended, and when creating a list the user field is not visible, it will automatically populate to whatever user is logged in. The user specific views such as ShopList ensure that the logged in user only sees their lists, this was achieved by using 'get_context_data'. This successfully avoids users viewing the shopping lists of other users.
 
-There were two possible ways of adding items to lists, one was through the use of the text field in the List model (field list_items). An 'edit items' button would open up a form similar the the 'edit list' one, but with just the list_items field. Users could then type in new items or remove existing ones.
-
-![Edit items](static/media/edititems.jpg "Edit items")
-
-![Edit items](static/media/edititems2.jpg "Edit items")
-
-The second option was to make use of the Item model and the foreign key relationship by using the same CreateView/DeleteView as with the lists, with the 'list' field behaving in a similar way to the 'user' field in the List model (have this automatically prepopulate with the list name that is being updated, similar to how the user field is prepopulated with the logged in user data). This would allow users to add and delete individual items though a button, rather than have a text field for everything.
+For the items view, using the Item model and the foreign key relationship, the same CreateView/DeleteView was used. The 'list' field behaves in a similar way to the 'user' field in the List model (this automatically prepopulates with the list name that is being updated, similar to how the user field is prepopulated with the logged in user data). This allows users to add and delete individual items though a button, without having to specify a list to add them to.
 
 ![Edit items](static/media/addanitem.jpg "Add items")
 
 ![Edit items](static/media/addanitem2.jpg "Add items")
-
-In the end, it was decided to go with the option of using the second Item model, however for future versions of the website the textbox field can also be considered. It could also be possible to have both options visible, allowing the user to choose which method they prefer or which one is more suitable to the type of list they need (a text box might suit some types of shopping better than adding each item one at a time or vice versa). 
 
 Adding the items to the list details page for viewing was achieved with the use of item_set. A for loop was used to loop through the detail view for the lists (listdetails) and then item_set.all displays all of the items associated with that list.
 
@@ -118,18 +110,18 @@ The date format in the 'due date' field of creating a new list is currently in Y
 <a name="listdetails"></a>
 ### List Details page
 
-When users click on the 'see details' link on the 'your lists' page, this will bring them into the list details page for that specific list. On this page, users can see all details related to that list such as title, description, date created, last updated, due date and items. Other than viewing, users can also take actions on this page with 3 different buttons.
+When users click on the 'see details' link on the 'your lists' page, this will bring them into the list details page for that specific list. On this page, users can see all details related to that list such as title, description, date created, last updated, due date, complete status and items. Other than viewing, users can also take actions on this page with 3 different buttons.
 
 The 'edit list' button brings up a form with the title, description, due date and complete status fields. Users can edit these fields and mark the list as complete, save the form and they will be redirected to the list details page which will now change to show the updates made.
 
 The 'delete list' button will bring up a confirmation page asking if the user wants to delete the list. When this is confirmed, the list is deleted and the user is redirected to the 'your lists' page. The deleted list no longer shows there, as it has been deleted.
 
-The 'edit items' button ...
+The 'add item' button brings up the from from the item list with the name and quantity fields. When users fill this in and submit, it redirects back to the list details page for the list they are updating, with the new item showing there.
 
 <a name="registration"></a>
 ### Register/login/logout
 
-These options are displayed on the navigation bar. Click on 'register' opens a form which asks the user to select a username and password. There is an option field for an email address. Once the fields are filled in, users can then click on the 'sign up' button and this will create their account.
+These options are displayed on the navigation bar. Clicking on 'register' opens a form which asks the user to select a username and password. There is an option field for an email address. Once the fields are filled in, users can then click on the 'sign up' button and this will create their account.
 
 If users click on the 'login' option, this brings up a form where they insert their username and password. When clicking on 'sign in', they are redirected back to the homepage with the updated navigation options and will see a success message confirming they have signed in.
 
@@ -144,6 +136,9 @@ The shopping lists are the purpose of the website so this is the main feature th
 
 ![Lists](static/media/yourlists.jpg "Lists")
 
+![Lists](static/media/listdetails2.jpg "Listdetails")
+
+Users can mark lists as complete. When they do this, a strike appears through the list title in the your lists page and the complete part of the list details page changes from 'no' to 'yes. This means that by viewing the list details page, a user can see if the list is completed or not.
 
 Success messages are displayed to the user when they create, edit or delete lists. This ensures that they are aware their action has been completed successfully.
 
@@ -159,6 +154,10 @@ Success messages are displayed to the user when they create, edit or delete list
 
 Items can be added through the add items button, which brings up a form with the fields from the Item model (name and quantity). When users submit the form, they are redirected back to the list details page and the new item shows under 'items'.
 
+![Lists](static/media/itemdetails.jpg "itemdetails")
+
+To delete items, users can click on the delete link. This brings up a confirmation page asked to confirm deletion. Once done, the item is delete and the user redirected to the list details page of the list they are viewing/updating.
+
 In future versions of the website, the items could have their own separate page like the list details. So users would go from viewing their lists, clicking on see details to see the details of that list and then be able to click on see items within the list details page. This would then bring to a new page with just the list of items. For this version, both list details and items are displayed on the same page.
 
 <a name="footer"></a>
@@ -167,6 +166,8 @@ In future versions of the website, the items could have their own separate page 
 The header is a simple design with text that lets the user know what the purpose of the website is and what they can expect from the site.
 
 The footer is again a simple design and contains links to social media sites and pages.
+
+![Footer](static/media/footerpp4.jpg "footer")
 
 
 <a name="technologies"></a>
@@ -261,10 +262,13 @@ List Details page
 | View page  | Displays details only for list clicked on | pass | 
 | Edit list button  | Opens a form that allows to edit title, description, due date and complete status | pass | 
 | Submit edit list form  | List details page updates with the new data | pass | 
-| Mark list as complete on edit list form  | Strike appears through title on your lists page | pass | 
+| Mark list as complete on edit list form  | Strike appears through title on your lists page, completed changes to 'yes' | pass | 
 | Delete list button  | Opens form asking to confirm deletion | pass | 
 | Confirm list deletion  | List is deleted, redirects to your lists page | pass | 
-| Edit items button  |  | pass | 
+| Add item button  | Opens form with name and quantity fields | pass | 
+| Submit add item form  | Redirects to list details, new item visible | pass | 
+| Delete item link  | Opens confirmation page | pass | 
+| Confirm list deletion  | Item deleted, redirects to list details page | pass |
 
 This testing covers not just the website features but also the user story testing. The above tables cover all parts of the must-have user stories (registration, login, CRUD functionality on lists)
 
@@ -277,6 +281,8 @@ Success messages testing/javascript testing
 | Create list  | success message 'List created successfully!' | pass | 
 | Edit list  | success message 'List updated successfully!' | pass | 
 | Delete list  | success message 'List deleted successfully!' | pass | 
+| Add item  | success message 'Item created successfully!' | pass | 
+| Delete item  | success message 'Item deleted successfully!' | pass | 
 | Javascript timeout  | messages disappear after 3 seconds | pass | 
 
 <a name="validatortesting"></a>
@@ -299,10 +305,16 @@ Responsiveness testing was done through Chrome developer tools, by using the opt
 
 Some screenshots of devices tested:
 
+Ipad
+![ipad](static/media/ipad2.jpg "ipad")
 
+Iphone
+![iphone](static/media/iphone.jpg "iphone")
 
 <a name="lighthousetesting"></a>
 ### Lighthouse
+
+Lighthouse testing was conducted through Chrome developer tools.
 
 ![Lighthouse](static/media/lighthousepp4.jpg "Lighthouse")
 
@@ -320,13 +332,12 @@ Please note that in order to replicate this test the database needs to be change
 
 Bugs
 
-Currently there are no known bugs on the website. Issues that did occur were related to form redirection (to list details page with pk of the list that was being viewed before) and updating specific model fields, however these have been fixed by using reverse_lazy and by specifing in the view which fields of the form are to be visible.
-
+Currently there are no known bugs on the website. 
 
 <a name="deployment"></a>
 ## Deployment
 
-This project was deployed to Heroku. A new app was created and then configured in Heroku through the 'settings' tab. These configurations are the 'config vars' which include the url to the database, secret key and PORT numbers.
+This project was deployed to Heroku. A new app was created and then configured in Heroku through the 'settings' tab. These configurations are the 'config vars' which include the url to the database, secret key and PORT numbers. The database was created on ElephantSQL and this is where the database URL goes to.
 
 The new Heroku app was then linked to the Github repository for this project and deployed using the manual deploy button in the deploy tab. 
 

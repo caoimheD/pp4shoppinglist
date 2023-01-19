@@ -15,7 +15,7 @@ def home_page(request):
 
 class CreateList(CreateView):
     model = List
-    fields = 'title', 'description', 'dueDate', 'list_items', 'complete'
+    fields = 'title', 'description', 'dueDate', 'complete'
     template_name = '../templates/create_list.html'
 
     def get_success_url(self):
@@ -73,15 +73,6 @@ class DeleteList(DeleteView):
 # Views for items
 
 
-class AddItems(UpdateView):
-    model = List
-    fields = 'list_items',
-    template_name = '../templates/add_item.html'
-
-    def get_success_url(self):
-        return reverse_lazy('details', kwargs={'pk': self.object.pk})
-
-
 class CreateItem(CreateView):
     model = Item
     fields = 'name', 'quantity',
@@ -108,4 +99,3 @@ class DeleteItem(DeleteView):
 
     def get_success_url(self):
         return reverse_lazy('details', kwargs={'pk': self.list_pk})
-

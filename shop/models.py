@@ -16,10 +16,9 @@ class List(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
     title = models.CharField(max_length=50, null=False, blank=False, default=None)
     description = models.TextField(max_length=50, null=False, blank=False, default=None)
-    list_items = models.TextField(default="", blank=False)
     dueDate = models.DateField(null=True, blank=True, default=datetime.today)
     updated_on = models.DateTimeField(auto_now=True)
-    created_on = models.DateTimeField(auto_now=True)
+    created_on = models.DateTimeField(auto_now_add=True)
     complete = models.BooleanField(default=False)
 
     class Meta:
