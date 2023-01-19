@@ -18,6 +18,7 @@
 4. [Deployment](#deployment)
 5. [Content Credits](#credits)
 
+![Mockup](static/media/mockuppp4.jpg "Mockup")
 
 Live site link: https://pp4shoppinglist.herokuapp.com/
 
@@ -36,7 +37,7 @@ The current strike through the title for completed lists allows users to see at 
 
 The site's ideal user is therefore frequent shoppers who could benefit from having more organization in their shopping experience and the site's goal is to provide that to them through the use of lists.
 
-The User Stories can be found in Github Projects (pp4shoppinglist -> Projects -> pp4shoppinglist) and are displayed in the Kanban board format. Each user story has an acceptance criteria and tasks. The User Stories with must-have criteria and that have been completed are:
+The User Stories can be found in Github Projects (pp4shoppinglist -> Projects -> pp4shoppinglist or https://github.com/users/caoimheD/projects/3) and are displayed in the Kanban board format. Each user story has an acceptance criteria and tasks. The User Stories with must-have criteria and that have been completed are:
 
 - Account registration: As a site user I can create an account so that I can create my shopping list
 - Login: As a site user I can login to my account so that I can view/edit my lists
@@ -45,7 +46,7 @@ The User Stories can be found in Github Projects (pp4shoppinglist -> Projects ->
 - Edit list: As a site user I can edit my shopping lists so that I can make any necessary changes
 - Delete list: As a site user I can delete my lists so that I do not have to view lists that I no longer need
 
-There are other User Stories that would allow for more funcitonality of the website and provide a more interactive user experience, but that are not categorized as must-have. These are:
+There are other User Stories that would allow for more functionality of the website and provide a more interactive user experience, but that are not categorized as must-have. These are:
 
 - Add item: As a user I can add items to lists so that I have all items I need (completed)
 - Delete item: As a user I can delete items so that lists do not contain items no longer needed (completed)
@@ -89,7 +90,9 @@ The second option was to make use of the Item model and the foreign key relation
 
 ![Edit items](static/media/addanitem2.jpg "Add items")
 
-In the end, it was decided to go with option .. , however for future versions of the website the other option can also be considered. It could also be possible to have both options visible, allowing the user to choose which method they prefer or which one is more suitable to the type of list they need (a text box might suit some types of shopping better than adding each item one at a time). The unused views were deleted to avoid confusion on the views.py file, however the option2 could easily be achieved by..
+In the end, it was decided to go with the option of using the second Item model, however for future versions of the website the textbox field can also be considered. It could also be possible to have both options visible, allowing the user to choose which method they prefer or which one is more suitable to the type of list they need (a text box might suit some types of shopping better than adding each item one at a time or vice versa). 
+
+Adding the items to the list details page for viewing was achieved with the use of item_set. A for loop was used to loop through the detail view for the lists (listdetails) and then item_set.all displays all of the items associated with that list.
 
 <a name="features"></a>
 ## Features
@@ -140,7 +143,7 @@ When users have finished their session and are ready to logout, they can use the
 The shopping lists are the purpose of the website so this is the main feature that users will interact with. As detailed in the section for the 'your lists' and 'see details' pages, there are different button options which allow the user to interact with their lists. Users have full CRUD functionality with any list they create as they can view the list, update it and delete it at any time.
 
 ![Lists](static/media/yourlists.jpg "Lists")
-![Lists](static/media/listdetails.jpg "Lists")
+
 
 Success messages are displayed to the user when they create, edit or delete lists. This ensures that they are aware their action has been completed successfully.
 
@@ -153,6 +156,10 @@ Success messages are displayed to the user when they create, edit or delete list
 
 <a name="listitems"></a>
 ### Shopping list items: add and remove items
+
+Items can be added through the add items button, which brings up a form with the fields from the Item model (name and quantity). When users submit the form, they are redirected back to the list details page and the new item shows under 'items'.
+
+In future versions of the website, the items could have their own separate page like the list details. So users would go from viewing their lists, clicking on see details to see the details of that list and then be able to click on see items within the list details page. This would then bring to a new page with just the list of items. For this version, both list details and items are displayed on the same page.
 
 <a name="footer"></a>
 ### Header and Footer

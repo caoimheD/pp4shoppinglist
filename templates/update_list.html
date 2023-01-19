@@ -4,7 +4,6 @@
 
 <div class="container-fluid">
     <div class="row">
-
         <div class="col-sm">
 
             <h3>Edit your list</h3>
@@ -14,14 +13,12 @@
                     <div class="col-sm-3 my-1">
                         {% csrf_token %}
                         {{ form.as_p }}
-                        <input type="submit" value="Save"  class="form-control">
+                        <input type="submit" value="Save" class="form-control">
                     </div>
                 </div>
             </form>
 
         </div>
-        
-
     </div>
 </div>
 

@@ -82,17 +82,6 @@ class AddItems(UpdateView):
         return reverse_lazy('details', kwargs={'pk': self.object.pk})
 
 
-class ItemList(ListView):
-    model = Item
-    template_name = '../templates/shop_list.html'
-    context_object_name = 'items'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['items'] = context['items'].filter(list=Item.list)
-        return context
-
-
 class CreateItem(CreateView):
     model = Item
     fields = 'name', 'quantity',
@@ -113,8 +102,10 @@ class DeleteItem(DeleteView):
     template_name = '../templates/delete_item.html'
 
     def form_valid(self, form):
+        self.list_pk = self.get_object().list.pk
         messages.success(self.request, 'Item deleted successfully!')
         return super(DeleteItem, self).form_valid(form)
 
     def get_success_url(self):
-        return reverse_lazy('lists')
+        return reverse_lazy('details', kwargs={'pk': self.list_pk})
+

@@ -4,52 +4,52 @@
 
 <!-- Success messages -->
 <div class="container">
-    <div class="row">
-      <div class="col-md-8 offset-md-2">
-        {% for message in messages %}
-        <div class="alert {{ message.tags }} alert-dismissible fade show" id="msg" role="alert">
-          {{ message | safe }}
-        </div>
-        {% endfor %}
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      {% for message in messages %}
+      <div class="alert {{ message.tags }} alert-dismissible fade show" id="msg" role="alert">
+        {{ message | safe }}
       </div>
+      {% endfor %}
     </div>
   </div>
+</div>
 
 <div class="container-fluid">
 
-    <a href={% url 'new' %} class="button btn-lg active" role="button" aria-pressed="true">New List</a>
+  <a href={% url 'new' %} class="button btn-lg active" role="button" aria-pressed="true">New List</a>
 
-    <div class="row">
+  <div class="row">
+    <div class="col-sm">
+      <br>
 
-        <div class="col-sm">
-            <br>
+      {% for shoppinglist in shoppinglists %}
 
-            {% for shoppinglist in shoppinglists %}
-
-            <div class="card text-center mb-3 list">
-                <div class="card-body">
-                    {% if shoppinglist.complete %}
-                    <h5 class="card-title"><strike>{{ shoppinglist.title }}</strike></h5>
-                    {% else %}
-                    <h5 class="card-title">{{ shoppinglist.title }}</h5>
-                    {% endif %}
-                    <h6 class="card-subtitle mb-2 text-muted">{{ shoppinglist.description }}</h6>
-                    <a href={% url 'details' shoppinglist.id %} class="card-link">See details</a>
-                </div>
-            </div>
-            {% endfor %}
-
+      <div class="card text-center mb-3 list">
+        <div class="card-body">
+          {% if shoppinglist.complete %}
+          <h5 class="card-title"><strike>{{ shoppinglist.title }}</strike></h5>
+          {% else %}
+          <h5 class="card-title">{{ shoppinglist.title }}</h5>
+          {% endif %}
+          <h6 class="card-subtitle mb-2 text-muted">{{ shoppinglist.description }}</h6>
+          <a href={% url 'details' shoppinglist.id %} class="card-link">See details</a>
         </div>
+      </div>
+
+      {% endfor %}
+
     </div>
+  </div>
 </div>
 
 {% endblock %}
 
 <!-- Success messages timeout -->
 <script>
-    setTimeout(function () {
-        let messages = document.getElementById('msg');
-        let alert = new bootstrap.Alert(messages);
-        alert.close();
-    }, 3000);
+  setTimeout(function () {
+    let messages = document.getElementById('msg');
+    let alert = new bootstrap.Alert(messages);
+    alert.close();
+  }, 3000);
 </script>
