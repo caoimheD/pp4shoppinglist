@@ -337,11 +337,11 @@ Currently there are no known bugs on the website.
 <a name="deployment"></a>
 ## Deployment
 
-This project was deployed to Heroku. A new app was created and then configured in Heroku through the 'settings' tab. These configurations are the 'config vars' which include the url to the database, secret key and PORT numbers. The database was created on ElephantSQL and this is where the database URL goes to.
+This project was deployed to Heroku. A new app was created (New button -> 'Create new app' -> choose region/name -> Create app). This app was then configured in Heroku through the 'settings' tab. These configurations are the 'config vars' which are: cloudinary url, the url to the database (ElephantSQL), secret key, PORT numbers and heroku postgresql ivory url. The database was created on ElephantSQL and this is where the database URL points to. In Gitpod the config vars were saved in an env.py file. This was added to a .gitignore list so that the config vars are not visible on Github.
 
-The new Heroku app was then linked to the Github repository for this project and deployed using the manual deploy button in the deploy tab. 
+The new Heroku app was then linked to the Github repository for this project and deployed using the manual deploy button in the deploy tab (deploy tab -> github button -> search for project). 
 
-Automatic deployments were then enabled so that any push to github would also deploy on the live Heroku app.
+Automatic deployments were then enabled so that any push to github would also deploy on the live Heroku app. This was checked in the 'activities' tab to ensure that these automatic deployments happened. Before final deployment, the debug settings was changed to 'false' in settings.py. This means that if errors do occur on the live site, users will only see generic errors and no specific site details.
 
 <a name="credits"></a>
 ## References
