@@ -5,6 +5,7 @@ from django.views.generic import ListView, DetailView, UpdateView, \
 from django.urls import reverse, reverse_lazy
 from django.contrib.auth.models import User
 from django.contrib import messages
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 def home_page(request):
@@ -13,7 +14,7 @@ def home_page(request):
 # Views for lists
 
 
-class CreateList(CreateView):
+class CreateList(LoginRequiredMixin, CreateView):
     model = List
     fields = 'title', 'description', 'dueDate', 'complete'
     template_name = '../templates/create_list.html'
@@ -27,7 +28,7 @@ class CreateList(CreateView):
         return super(CreateList, self).form_valid(form)
 
 
-class ShopList(ListView):
+class ShopList(LoginRequiredMixin, ListView):
     model = List
     template_name = '../templates/shop_list.html'
     context_object_name = 'shoppinglists'
@@ -39,13 +40,13 @@ class ShopList(ListView):
         return context
 
 
-class ListDetail(DetailView):
+class ListDetail(LoginRequiredMixin, DetailView):
     model = List
     template_name = '../templates/shop_detail.html'
     context_object_name = 'listdetails'
 
 
-class UpdateList(UpdateView):
+class UpdateList(LoginRequiredMixin, UpdateView):
     model = List
     fields = 'title', 'description', 'dueDate', 'complete',
     template_name = '../templates/update_list.html'
@@ -59,7 +60,7 @@ class UpdateList(UpdateView):
         return super(UpdateList, self).form_valid(form)
 
 
-class DeleteList(DeleteView):
+class DeleteList(LoginRequiredMixin, DeleteView):
     model = List
     template_name = '../templates/delete_list.html'
 
@@ -73,7 +74,7 @@ class DeleteList(DeleteView):
 # Views for items
 
 
-class CreateItem(CreateView):
+class CreateItem(LoginRequiredMixin, CreateView):
     model = Item
     fields = 'name', 'quantity',
     template_name = '../templates/additem.html'
@@ -88,7 +89,7 @@ class CreateItem(CreateView):
         return reverse_lazy('details', kwargs={'pk': self.kwargs['pk']})
 
 
-class DeleteItem(DeleteView):
+class DeleteItem(LoginRequiredMixin, DeleteView):
     model = Item
     template_name = '../templates/delete_item.html'
 
