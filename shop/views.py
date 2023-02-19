@@ -45,6 +45,10 @@ class ListDetail(LoginRequiredMixin, DetailView):
     template_name = '../templates/shop_detail.html'
     context_object_name = 'listdetails'
 
+    def get_queryset(self, *args, **kwargs):
+        return super().get_queryset(*args, **kwargs).filter(
+            user=self.request.user)
+
 
 class UpdateList(LoginRequiredMixin, UpdateView):
     model = List
@@ -59,6 +63,10 @@ class UpdateList(LoginRequiredMixin, UpdateView):
         messages.success(self.request, 'List updated successfully!')
         return super(UpdateList, self).form_valid(form)
 
+    def get_queryset(self, *args, **kwargs):
+        return super().get_queryset(*args, **kwargs).filter(
+            user=self.request.user)
+
 
 class DeleteList(LoginRequiredMixin, DeleteView):
     model = List
@@ -70,6 +78,10 @@ class DeleteList(LoginRequiredMixin, DeleteView):
     def form_valid(self, form):
         messages.success(self.request, 'List deleted successfully!')
         return super(DeleteList, self).form_valid(form)
+
+    def get_queryset(self, *args, **kwargs):
+        return super().get_queryset(*args, **kwargs).filter(
+            user=self.request.user)
 
 # Views for items
 
